@@ -1,0 +1,44 @@
+string codeForDigit(int digit)
+{
+    string result;
+    if (digit == 0)
+        result = "||:::";
+    else if (digit == 1)
+        result = ":::||";
+    else if (digit == 2)
+        result = "::|:|";
+    else if (digit == 3)
+        result = "::||:";
+    else if (digit == 4)
+        result = ":|::|";
+    else if (digit == 5)
+        result = ":|:|:";
+    else if (digit == 6)
+        result = ":||::";
+    else if (digit == 7)
+        result = "|:::|";
+    else if (digit == 8)
+        result = "|::|:";
+    else if (digit == 9)
+        result = "|:|::";
+    return result;
+}
+
+int checkDigit(int zip)
+{
+    int result = 0;
+    int num = zip;
+    while (num > 0)
+    {
+        result += num % 10;
+        num /= 10;
+    }
+    if (result % 10 == 0) result = 0;
+        else result = 10 - (result % 10);
+    return result;
+}
+
+string barCode(int zip)
+{
+    return "";
+}
