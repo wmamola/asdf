@@ -1,0 +1,35 @@
+string dataSets(const string& fileName)
+{
+    string result = "";
+    int num = 0;
+    ostringstream out;
+    ifstream infile(fileName);
+    if(infile.fail())
+    {
+        result = fileName + " cannot be opened.";
+        return result;
+    }
+    int dataSet = 1;
+    infile >> num;
+    while (infile)
+    {
+        int count = 0;
+        double sum = 0.0;
+        while(num != 0)
+        {
+            double process = 0.0;
+            infile >> process;
+            count += num;
+            sum += (num * process);
+            infile >> num;
+        }
+        out << "data set " << dataSet << ": total values = " << count <<
+            "\n" << "average value = " << fixed << setprecision(4) <<
+                (sum/count) << "\n" << "\n";
+        dataSet++;
+        infile >> num;
+    }
+    result = out.str();
+    result = result.substr(0, result.size()-2);
+    return result;
+}
